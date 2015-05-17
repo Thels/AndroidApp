@@ -30,6 +30,7 @@ public class PlayState extends GameState {
 	protected PlayState(GameStateManager gameStateManager) {
 		super(gameStateManager);
 
+		
 		box2DRenderer = new Box2DDebugRenderer();
 		box2DCamera = new OrthographicCamera();
 		box2DCamera.setToOrtho(false, V_WIDTH, V_HEIGHT);
@@ -42,26 +43,12 @@ public class PlayState extends GameState {
 		gizmoGrid.placeGizmo(ball);
 		ball.createPhysicsObject(physicsManager.getPhysicsWorld());
 
-		for (int i = 0; i <= GRID_WIDTH; i++) {
+		for (int i = 0; i < GRID_WIDTH; i++) {
 			Gizmo block = new Block(i, 0);
 			gizmoGrid.placeGizmo(block);
+			block.createPhysicsObject(physicsManager.getPhysicsWorld());
 		}
 
-		for (int i = 0; i <= GizmoballConstants.GRID_WIDTH; i++) {
-			Gizmo block = new Block(i, GizmoballConstants.GRID_HEIGHT);
-			gizmoGrid.placeGizmo(block);
-		}
-
-		for (int i = 0; i <= GizmoballConstants.GRID_HEIGHT; i++) {
-			Gizmo block = new Block(0, i);
-			gizmoGrid.placeGizmo(block);
-		}
-
-		for (int i = 0; i <= GizmoballConstants.GRID_HEIGHT; i++) {
-			Gizmo block = new Block(GizmoballConstants.GRID_WIDTH, i);
-			gizmoGrid.placeGizmo(block);
-		}
-		
 		Gizmo block = new Block(GizmoballConstants.GRID_WIDTH, GizmoballConstants.GRID_HEIGHT);
 		gizmoGrid.placeGizmo(block);
 	
@@ -89,7 +76,7 @@ public class PlayState extends GameState {
 	@Override
 	public void render() {
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		box2DRenderer.render(physicsManager.getPhysicsWorld(), box2DCamera.combined);
+//		box2DRenderer.render(physicsManager.getPhysicsWorld(), box2DCamera.combined);
 		renderer.renderGizmos(spriteBatch, gizmoGrid.getAllGizmos());
 	}
 

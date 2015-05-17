@@ -12,7 +12,10 @@ public class GizmoRendererImpl implements Renderer {
 	private void renderGizmo(SpriteBatch spriteBatch, Gizmo gizmo) {
 		Texture gizmoTexture = gizmo.getTexture();
 		if (gizmoTexture != null) {
-			spriteBatch.draw(gizmoTexture, gizmo.getGizmoCenter().x, gizmo.getGizmoCenter().y, gizmoTexture.getWidth(), gizmoTexture.getHeight());
+			int width = gizmoTexture.getWidth();
+			int height = gizmoTexture.getHeight();
+			System.out.println("texture w/h "+width +" / "+height);
+			spriteBatch.draw(gizmoTexture, gizmo.getGizmoCenter().x-(width/2), gizmo.getGizmoCenter().y-(height/2), gizmoTexture.getWidth(), gizmoTexture.getHeight());
 		} else {
 			throw new RuntimeException("Attempted to render gizmo which doesn't exist");
 		}

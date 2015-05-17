@@ -18,7 +18,6 @@ public class LocationTranslator {
 		for (int i = 0; i < yGrid; i++) {
 			translatedLocY += TILE_SIZE;
 		}
-
 		return new Vector2(translatedLocX, translatedLocY);
 	}
 

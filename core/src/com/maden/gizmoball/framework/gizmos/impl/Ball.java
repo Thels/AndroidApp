@@ -37,6 +37,7 @@ public class Ball extends Gizmo {
 	public FixtureDef getFixtureDef() {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = getShape();
+		fixtureDef.restitution = .8f;
 		return fixtureDef;
 	}
 

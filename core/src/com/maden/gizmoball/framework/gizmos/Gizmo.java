@@ -17,7 +17,11 @@ public abstract class Gizmo {
 	protected Vector2 gizmoCenter;
 	protected int gridY;
 	protected int gridX;
+	
 	protected Body gizmoPhysicsBody;
+	protected BodyDef gizmoPhysicsBodyDef;
+	protected FixtureDef gizmoPhysicsFixtureDef;
+	protected Fixture gizmoPhysicsFixture;
 
 	public Gizmo(Texture gizmoTexture, int gridX, int gridY) {
 

@@ -17,9 +17,9 @@ public class PhysicsManager {
 	private Map<Gizmo, Fixture> gizmoMap = new HashMap<Gizmo, Fixture>();
 
 	public PhysicsManager() {
-		physicsWorld = new World(new Vector2(0, -9.18f), false);
+		physicsWorld = new World(new Vector2(0, -84f), false);
 	}
-	
+
 	public void addGizmoToPhysicsWorld(Gizmo gizmo) {
 		BodyDef bodyDef = gizmo.getBodyDef();
 		Body gizmoBody = getPhysicsWorld().createBody(bodyDef);

@@ -17,7 +17,6 @@ public class Block extends Gizmo {
 
 	@Override
 	public void update(float dt) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -25,13 +24,14 @@ public class Block extends Gizmo {
 	public BodyDef getBodyDef() {
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.type = BodyDef.BodyType.StaticBody;
+		bodyDef.position.set(getGizmoCenter());
 		return bodyDef;
 	}
 
 	@Override
 	protected Shape getShape() {
 		PolygonShape blockShape = new PolygonShape();
-		blockShape.setAsBox(TILE_SIZE, TILE_SIZE);
+		blockShape.setAsBox(TILE_SIZE/2, TILE_SIZE/2);
 		return blockShape;
 	}
 
