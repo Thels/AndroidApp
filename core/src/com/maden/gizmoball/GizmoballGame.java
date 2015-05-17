@@ -23,7 +23,7 @@ public class GizmoballGame extends ApplicationAdapter {
 		spriteBatch = new SpriteBatch();
 		gameStateManager = new GameStateManager(this);
 		setupCameras();
-
+		gameStateManager.setGameState(0);
 	}
 
 	private void setupCameras() {

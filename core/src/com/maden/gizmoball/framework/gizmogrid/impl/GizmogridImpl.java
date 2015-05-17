@@ -15,6 +15,7 @@ public class GizmogridImpl implements Gizmogrid {
 
 	public GizmogridImpl() {
 		gizmoGrid = new Gizmo[GRID_WIDTH * GRID_HEIGHT];
+		System.out.println("Created grid of size = " + GRID_WIDTH * GRID_HEIGHT);
 	}
 
 	@Override
@@ -28,7 +29,9 @@ public class GizmogridImpl implements Gizmogrid {
 	}
 
 	@Override
-	public void placeGizmoAtLocation(Gizmo toPlace, int xLocation, int yLocation) {
+	public void placeGizmo(Gizmo toPlace) {
+		int xLocation = toPlace.getGridX();
+		int yLocation = toPlace.getGridY();
 		gizmoGrid[(xLocation * GRID_WIDTH) + yLocation] = toPlace;
 	}
 

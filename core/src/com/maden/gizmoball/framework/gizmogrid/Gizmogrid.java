@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.maden.gizmoball.framework.gizmos.Gizmo;
 
-public interface Gizmogrid {
 
+public interface Gizmogrid {
 	List<Gizmo> getAllGizmos();
 
 	boolean doesGizmoExist(int xLocation, int yLocation);
 
-	void placeGizmoAtLocation(Gizmo toPlace, int xLocation, int yLocation);
+	void placeGizmo(Gizmo toPlace);
 }

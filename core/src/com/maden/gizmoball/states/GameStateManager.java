@@ -7,53 +7,38 @@ import com.maden.gizmoball.GizmoballGame;
 public class GameStateManager {
 
 	private GizmoballGame gizmoballGame;
-	
+
 	private Stack<GameState> gameStates;
-	
-	
-	
-	
-	
-	public GameStateManager(GizmoballGame game)
-	{
+
+	public GameStateManager(GizmoballGame game) {
 		this.gizmoballGame = game;
 		gameStates = new Stack<GameState>();
-		
+
 	}
-	
-	public GizmoballGame getGame()
-	{
+
+	public GizmoballGame getGame() {
 		return gizmoballGame;
 	}
-	
-	public void updateGameState(float dt)
-	{
+
+	public void updateGameState(float dt) {
 		GameState peek = gameStates.peek();
-		if(peek != null)
-		{
+		if (peek != null) {
 			peek.update(dt);
-		}
-		else
-		{
+		} else {
 			throw new RuntimeException("Attempted to update null gamestate.");
 		}
 	}
-	
-	public void renderGameState()
-	{
+
+	public void renderGameState() {
 		GameState peek = gameStates.peek();
-		if(peek != null)
-		{
+		if (peek != null) {
 			peek.render();
-		}
-		else
-		{
+		} else {
 			throw new RuntimeException("Attempted to render null gamestate");
 		}
 	}
-	
-	private GameState getGameState(int gameState)
-	{
+
+	private GameState getGameState(int gameState) {
 		switch (gameState) {
 		case 0:
 			return new PlayState(this);
@@ -61,34 +46,25 @@ public class GameStateManager {
 			return null;
 		}
 	}
-	
-	public void setGameState(int gameState)
-	{
+
+	public void setGameState(int gameState) {
 		removeCurrentGameState();
 		pushGameState(gameState);
 	}
-	
-	public void pushGameState(int gameState)
-	{
+
+	public void pushGameState(int gameState) {
 		GameState newGameState = getGameState(gameState);
-		if(newGameState != null)
-		{
+		if (newGameState != null) {
 			gameStates.push(newGameState);
 		}
 	}
-	
-	public void removeCurrentGameState()
-	{
+
+	public void removeCurrentGameState() {
+		if (gameStates.isEmpty()) {
+			return;
+		}
 		GameState currentGameState = gameStates.pop();
 		currentGameState.dispose();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
